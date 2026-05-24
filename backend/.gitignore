@@ -1,0 +1,16 @@
+# Artefactos locales del backend (complementa .gitignore raíz)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite3
+restaurant.db
+*.egg-info/
