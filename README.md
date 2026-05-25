@@ -110,8 +110,17 @@ GUERRA DE TESTERS/
 
 ## Requisitos previos
 
-- **Python** 3.10 o superior
-- **Node.js** 18+ y **npm**
+- **Python** 3.10 o superior- **Node.js** 20+ y **npm**
+   - Se sugiere usar el instalador de **NVM for Windows** para mantener la última versión estable de Node.js y facilitar la administración de versiones del entorno.
+   - Descarga del instalador:
+     - [NVM for Windows Releases](https://github.com/coreybutler/nvm-windows/releases)
+   - Instalar el archivo `nvm-setup.exe` y luego ejecutar:
+
+```bash
+nvm install latest
+nvm use latest
+```
+
 - **Git** (para clonar y publicar el repositorio)
 
 ---
