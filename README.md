@@ -110,7 +110,8 @@ GUERRA DE TESTERS/
 
 ## Requisitos previos
 
-- **Python** 3.10 o superior- **Node.js** 20+ y **npm**
+- **Python** 3.10 o superior
+- **Node.js** 20+ y **npm**
    - Se sugiere usar el instalador de **NVM for Windows** para mantener la última versión estable de Node.js y facilitar la administración de versiones del entorno.
    - Descarga del instalador:
      - [NVM for Windows Releases](https://github.com/coreybutler/nvm-windows/releases)
@@ -131,7 +132,7 @@ nvm use latest
 
 ```bash
 git clone <URL-de-tu-repositorio>
-cd "GUERRA DE TESTERS"
+cd "novachef-restaurant-platform"
 ```
 
 ### 2. Backend (API)
