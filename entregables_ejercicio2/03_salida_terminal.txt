@@ -1,0 +1,36 @@
+======================================================================================
+ NOVACHEF - EJERCICIO PROPUESTO 2 | PRUEBAS DE INTEGRACION (INYECCION DE FALLAS)
+ Herramienta: pytest 8.x + FastAPI TestClient (equivalente Python de Supertest)
+ Fecha de ejecucion: 2026-07-03 00:48:36
+ Comando: python -m pytest tests/test_fronteras_integracion.py -v
+======================================================================================
+
+============================= test session starts =============================
+collecting ... collected 24 items
+
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN01_pedido_con_tipo_de_dato_erroneo_en_notes PASSED [  4%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN02_pedido_con_direccion_bajo_longitud_minima PASSED [  8%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM01_pedido_desde_carrito_vacio PASSED [ 12%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM02_pedido_excede_monto_maximo PASSED [ 16%]
+tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM03_stock_insuficiente_bloqueado_en_frontera PASSED [ 20%]
+tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM04_consistencia_descuento_stock PASSED [ 25%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN03_pago_sin_numero_de_tarjeta PASSED [ 29%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN04_pago_con_amount_no_numerico PASSED [ 33%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN05_pago_con_tarjeta_de_15_digitos PASSED [ 37%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM05_pago_con_monto_distinto_al_total PASSED [ 41%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM06_doble_pago_del_mismo_pedido PASSED [ 45%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM07_pago_de_pedido_ajeno PASSED [ 50%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM08_pago_de_pedido_inexistente PASSED [ 54%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN06_delivery_con_distancia_fuera_de_rango PASSED [ 58%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN07_delivery_sin_campo_address PASSED [ 62%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM09_delivery_para_pedido_pendiente PASSED [ 66%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM10_delivery_para_pedido_de_recojo_en_local PASSED [ 70%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM11_transicion_de_estado_ilegal PASSED [ 75%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM12_cliente_no_puede_crear_inventario PASSED [ 79%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SIN08_token_malformado PASSED [ 83%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM13_acceso_sin_token PASSED [ 87%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES01_latencia_alta_en_creacion_de_pedido PASSED [ 91%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES02_fallo_del_subsistema_de_pago_no_expone_stacktrace PASSED [ 95%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES03_integridad_tras_latencia_no_hay_doble_descuento PASSED [100%]
+
+============================= 24 passed in 23.38s =============================

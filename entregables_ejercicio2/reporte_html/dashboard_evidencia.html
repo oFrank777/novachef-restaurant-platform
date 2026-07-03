@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>NovaChef · Evidencia Pruebas de Integración</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         background: #0f172a; color: #e2e8f0; padding: 40px; width: 1200px; }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  header { border-bottom: 3px solid #f97316; padding-bottom: 20px; margin-bottom: 28px; }
+  h1 { font-size: 30px; color: #fff; letter-spacing: .3px; }
+  h1 span { color: #f97316; }
+  .sub { color: #94a3b8; margin-top: 6px; font-size: 15px; }
+  h2 { font-size: 20px; color: #fff; margin: 34px 0 14px; padding-left: 12px;
+       border-left: 4px solid #f97316; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; text-align: center; }
+  .card .n { font-size: 42px; font-weight: 800; color: #22c55e; }
+  .card.amber .n { color: #f59e0b; }
+  .card.orange .n { color: #f97316; }
+  .card.blue .n { color: #38bdf8; }
+  .card .l { color: #94a3b8; font-size: 13px; margin-top: 4px; text-transform: uppercase; letter-spacing: .5px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13.5px;
+          background: #1e293b; border-radius: 10px; overflow: hidden; }
+  th { background: #f97316; color: #0f172a; text-align: left; padding: 11px 12px; font-weight: 700; }
+  td { padding: 9px 12px; border-top: 1px solid #334155; }
+  tr:nth-child(even) td { background: #243044; }
+  .ok { color: #22c55e; font-weight: 700; }
+  .warn { color: #f59e0b; font-weight: 700; }
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .sin { background: #1d4ed8; color: #fff; }
+  .sem { background: #7c3aed; color: #fff; }
+  .res { background: #dc2626; color: #fff; }
+  .front { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 14px; }
+  .fbox { background: #1e293b; border: 1px solid #334155; border-top: 3px solid #38bdf8; border-radius: 10px; padding: 14px; }
+  .fbox b { color: #fff; font-size: 15px; }
+  .fbox p { color: #94a3b8; font-size: 12px; margin-top: 6px; line-height: 1.5; }
+  .finding { background: #1e293b; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 16px; margin-top: 12px; }
+  .finding.info { border-left-color: #38bdf8; }
+  .finding b { color: #fff; }
+  .finding p { color: #cbd5e1; font-size: 13.5px; margin-top: 6px; line-height: 1.6; }
+  footer { margin-top: 34px; padding-top: 18px; border-top: 1px solid #334155; color: #64748b; font-size: 12.5px; text-align: center; }
+  .pill { background: #22c55e; color: #052e16; font-weight: 800; padding: 6px 16px; border-radius: 999px; font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Nova<span>Chef</span> · Evidencia de Pruebas de Integración</h1>
+    <div class="sub">Ejercicio Propuesto 2 — Inyección de Fallas de Interfaz &nbsp;·&nbsp; Práctica 08 · Pruebas de Software &nbsp;·&nbsp; Backend FastAPI + SQLite &nbsp;·&nbsp; pytest + TestClient</div>
+  </header>
+
+  <div style="text-align:center;margin-bottom:6px;"><span class="pill">✔ 24 / 24 PASSED &nbsp;·&nbsp; 0 FAILED</span></div>
+
+  <div class="cards">
+    <div class="card blue"><div class="n">5</div><div class="l">Fronteras probadas</div></div>
+    <div class="card"><div class="n">24</div><div class="l">Casos ejecutados</div></div>
+    <div class="card orange"><div class="n">3</div><div class="l">Categorías de fallo</div></div>
+    <div class="card amber"><div class="n">2</div><div class="l">Hallazgos elevados</div></div>
+  </div>
+
+  <h2>Fronteras entre subsistemas (A → B)</h2>
+  <div class="front">
+    <div class="fbox"><b>F1</b><br>Carrito → Pedido<p>Checkout: consume CartItem, congela precios, total ≤ $5000</p></div>
+    <div class="fbox"><b>F2</b><br>Pedido → Inventario<p>Valida y descuenta stock (defensa en profundidad)</p></div>
+    <div class="fbox"><b>F3</b><br>Pedido → Pago<p>Monto = total, propietario, estado, unicidad, Luhn</p></div>
+    <div class="fbox"><b>F4</b><br>Pedido → Delivery<p>Estado, tipo de pedido, distancia, máquina de estados</p></div>
+    <div class="fbox"><b>F5</b><br>Auth/Roles → Ops<p>JWT + require_role, cerrado por defecto</p></div>
+  </div>
+
+  <h2>Matriz de resultados (Esperado vs Real)</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Frontera</th><th>Cat.</th><th>Entrada inyectada</th><th>Esperado</th><th>Real</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>SIN-01</td><td>F1 Carrito→Pedido</td><td><span class="tag sin">SIN</span></td><td>notes como objeto JSON</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-02</td><td>F1 Carrito→Pedido</td><td><span class="tag sin">SIN</span></td><td>dirección &lt;5 chars</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-01</td><td>F1 Carrito→Pedido</td><td><span class="tag sem">SEM</span></td><td>pedido con carrito vacío</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-02</td><td>F1 Carrito→Pedido</td><td><span class="tag sem">SEM</span></td><td>total $9801 (&gt;$5000)</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-03</td><td>F2 Pedido→Inventario</td><td><span class="tag sem">SEM</span></td><td>30 uds con stock 5</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-04</td><td>F2 Pedido→Inventario</td><td><span class="tag sem">SEM</span></td><td>descuento 50→42</td><td>42</td><td>42</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-03</td><td>F3 Pedido→Pago</td><td><span class="tag sin">SIN</span></td><td>tarjeta sin card_number</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-04</td><td>F3 Pedido→Pago</td><td><span class="tag sin">SIN</span></td><td>amount = "mucho dinero"</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-05</td><td>F3 Pedido→Pago</td><td><span class="tag sin">SIN</span></td><td>tarjeta de 15 dígitos</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-05</td><td>F3 Pedido→Pago</td><td><span class="tag sem">SEM</span></td><td>pagar $1 un pedido de $20</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-06</td><td>F3 Pedido→Pago</td><td><span class="tag sem">SEM</span></td><td>doble pago del pedido</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-07</td><td>F3 Pedido→Pago</td><td><span class="tag sem">SEM</span></td><td>pagar pedido ajeno</td><td>403</td><td>403</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-08</td><td>F3 Pedido→Pago</td><td><span class="tag sem">SEM</span></td><td>pagar pedido inexistente</td><td>404</td><td>404</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-06</td><td>F4 Pedido→Delivery</td><td><span class="tag sin">SIN</span></td><td>distance_km = 50 (&gt;20)</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-07</td><td>F4 Pedido→Delivery</td><td><span class="tag sin">SIN</span></td><td>falta campo address</td><td>422</td><td>422</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-09</td><td>F4 Pedido→Delivery</td><td><span class="tag sem">SEM</span></td><td>delivery de pedido PENDIENTE</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-10</td><td>F4 Pedido→Delivery</td><td><span class="tag sem">SEM</span></td><td>delivery de "recojo en local"</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-11</td><td>F4 Pedido→Delivery</td><td><span class="tag sem">SEM</span></td><td>salto PENDIENTE→ENTREGADO</td><td>400</td><td>400</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-12</td><td>F5 Auth/Roles</td><td><span class="tag sem">SEM</span></td><td>cliente crea inventario</td><td>403</td><td>403</td><td class="ok">✔</td></tr>
+      <tr><td>SIN-08</td><td>F5 Auth/Roles</td><td><span class="tag sin">SIN</span></td><td>token JWT malformado</td><td>401</td><td>401</td><td class="ok">✔</td></tr>
+      <tr><td>SEM-13</td><td>F5 Auth/Roles</td><td><span class="tag sem">SEM</span></td><td>operar sin token</td><td>401/403</td><td>401/403</td><td class="ok">✔</td></tr>
+      <tr><td>RES-01</td><td>F1 (latencia)</td><td><span class="tag res">RES</span></td><td>+2 s en create_order</td><td>sin timeout</td><td>201 sin timeout</td><td class="warn">⚠ H-01</td></tr>
+      <tr><td>RES-02</td><td>F3 (fallo BD)</td><td><span class="tag res">RES</span></td><td>excepción interna en pago</td><td>500 genérico</td><td>500 genérico</td><td class="ok">✔</td></tr>
+      <tr><td>RES-03</td><td>F2 (latencia)</td><td><span class="tag res">RES</span></td><td>+1 s, integridad stock</td><td>30→25</td><td>30→25</td><td class="ok">✔</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Hallazgos elevados</h2>
+  <div class="finding">
+    <b>⚠️ H-01 · Ausencia de timeout / circuit-breaker (Severidad MEDIA)</b>
+    <p>RES-01: con 2 s de latencia inyectada, la capa HTTP bloquea el worker hasta completar (201) en vez de cortar con 504. Riesgo de agotamiento de workers bajo saturación. Recomendación: middleware de timeout (504), circuit-breaker y pool_timeout en SQLAlchemy.</p>
+  </div>
+  <div class="finding info">
+    <b>ℹ️ H-02 · Validación de stock duplicada — defensa en profundidad (Informativo)</b>
+    <p>SEM-03: el stock se valida primero en Carrito→Inventario (add_to_cart) y de nuevo en Pedido→Inventario (create_order). Es una buena práctica shift-left; el segundo guard protege ante condiciones de carrera con with_for_update().</p>
+  </div>
+
+  <footer>
+    Generado automáticamente · Suite <b>tests/test_fronteras_integracion.py</b> · pytest 8.x + FastAPI TestClient · Evidencia: 03_salida_terminal.txt · reporte_integracion.html · capturas/*.png
+  </footer>
+</div>
+</body>
+</html>

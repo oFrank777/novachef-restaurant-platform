@@ -1,0 +1,847 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.1, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\User\OneDrive\Documentos\GUERRA DE TESTERS\.venv\Scripts\python.exe
+metadata: {'Python': '3.13.1', 'Platform': 'Windows-11-10.0.26200-SP0', 'Packages': {'pytest': '8.4.2', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.13.0', 'html': '4.2.0', 'metadata': '3.1.1'}, 'JAVA_HOME': 'C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.11.10-hotspot\\'}
+rootdir: C:\Users\User\OneDrive\Documentos\GUERRA DE TESTERS
+plugins: anyio-4.13.0, html-4.2.0, metadata-3.1.1
+collecting ... collected 24 items
+
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN01_pedido_con_tipo_de_dato_erroneo_en_notes PASSED [  4%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN02_pedido_con_direccion_bajo_longitud_minima PASSED [  8%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM01_pedido_desde_carrito_vacio PASSED [ 12%]
+tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM02_pedido_excede_monto_maximo PASSED [ 16%]
+tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM03_stock_insuficiente_bloqueado_en_frontera PASSED [ 20%]
+tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM04_consistencia_descuento_stock PASSED [ 25%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN03_pago_sin_numero_de_tarjeta PASSED [ 29%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN04_pago_con_amount_no_numerico PASSED [ 33%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN05_pago_con_tarjeta_de_15_digitos PASSED [ 37%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM05_pago_con_monto_distinto_al_total PASSED [ 41%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM06_doble_pago_del_mismo_pedido PASSED [ 45%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM07_pago_de_pedido_ajeno PASSED [ 50%]
+tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM08_pago_de_pedido_inexistente PASSED [ 54%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN06_delivery_con_distancia_fuera_de_rango PASSED [ 58%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN07_delivery_sin_campo_address PASSED [ 62%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM09_delivery_para_pedido_pendiente PASSED [ 66%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM10_delivery_para_pedido_de_recojo_en_local PASSED [ 70%]
+tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM11_transicion_de_estado_ilegal PASSED [ 75%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM12_cliente_no_puede_crear_inventario PASSED [ 79%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SIN08_token_malformado PASSED [ 83%]
+tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM13_acceso_sin_token PASSED [ 87%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES01_latencia_alta_en_creacion_de_pedido PASSED [ 91%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES02_fallo_del_subsistema_de_pago_no_expone_stacktrace PASSED [ 95%]
+tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES03_integridad_tras_latencia_no_hay_doble_descuento PASSED [100%]
+
+=================================== PASSES ====================================
+__ TestF1_CarritoPedido.test_SIN01_pedido_con_tipo_de_dato_erroneo_en_notes ___
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:43,915 | WARNING  | passlib.handlers.bcrypt | (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\OneDrive\Documentos\GUERRA DE TESTERS\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2026-07-03 01:26:44,320 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=199.18
+2026-07-03 01:26:44,322 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:44,330 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.23
+2026-07-03 01:26:44,331 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:44,340 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.4
+2026-07-03 01:26:44,341 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:44,535 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=192.26
+2026-07-03 01:26:44,536 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:44,727 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=189.82
+2026-07-03 01:26:44,728 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:44,736 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=6.53
+2026-07-03 01:26:44,737 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:44,741 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=422 duration_ms=2.6
+2026-07-03 01:26:44,742 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+WARNING  passlib.handlers.bcrypt:bcrypt.py:622 (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\User\OneDrive\Documentos\GUERRA DE TESTERS\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=199.18
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.23
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.4
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=192.26
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=189.82
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=6.53
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=422 duration_ms=2.6
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 422 Unprocessable Entity"
+__ TestF1_CarritoPedido.test_SIN02_pedido_con_direccion_bajo_longitud_minima __
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:45,124 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=189.5
+2026-07-03 01:26:45,126 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:45,130 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=3.09
+2026-07-03 01:26:45,131 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:45,136 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=3.83
+2026-07-03 01:26:45,137 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:45,327 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=188.4
+2026-07-03 01:26:45,328 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:45,519 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=189.48
+2026-07-03 01:26:45,520 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:45,525 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=3.81
+2026-07-03 01:26:45,526 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:45,530 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=422 duration_ms=2.18
+2026-07-03 01:26:45,531 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=189.5
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=3.09
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=3.83
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=188.4
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=189.48
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=3.81
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=422 duration_ms=2.18
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 422 Unprocessable Entity"
+_________ TestF1_CarritoPedido.test_SEM01_pedido_desde_carrito_vacio __________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:45,727 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=191.46
+2026-07-03 01:26:45,729 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:45,964 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=232.36
+2026-07-03 01:26:45,966 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:45,975 | WARNING  | restaurante_delivery_api | AppException 400: El carrito está vacío. Añade productos antes de realizar un pedido.
+2026-07-03 01:26:45,975 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=400 duration_ms=6.67
+2026-07-03 01:26:45,977 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=191.46
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=232.36
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El carrito está vacío. Añade productos antes de realizar un pedido.
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=400 duration_ms=6.67
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+_________ TestF1_CarritoPedido.test_SEM02_pedido_excede_monto_maximo __________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:46,456 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.5
+2026-07-03 01:26:46,458 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:46,465 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.18
+2026-07-03 01:26:46,467 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:46,475 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=6.31
+2026-07-03 01:26:46,477 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:46,713 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=233.42
+2026-07-03 01:26:46,715 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:46,956 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=238.7
+2026-07-03 01:26:46,959 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:46,969 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.9
+2026-07-03 01:26:46,971 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:46,979 | WARNING  | restaurante_delivery_api | AppException 400: El total del pedido excede el monto máximo permitido ($5000.00)
+2026-07-03 01:26:46,979 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=400 duration_ms=5.68
+2026-07-03 01:26:46,981 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.5
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.18
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=6.31
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=233.42
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=238.7
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.9
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El total del pedido excede el monto máximo permitido ($5000.00)
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=400 duration_ms=5.68
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+_ TestF2_PedidoInventario.test_SEM03_stock_insuficiente_bloqueado_en_frontera _
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:47,446 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=229.18
+2026-07-03 01:26:47,448 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:47,456 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.78
+2026-07-03 01:26:47,458 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:47,470 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=6.95
+2026-07-03 01:26:47,472 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:47,710 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=235.71
+2026-07-03 01:26:47,712 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:47,969 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=254.7
+2026-07-03 01:26:47,972 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:47,980 | WARNING  | restaurante_delivery_api | AppException 400: Stock insuficiente para 'SEM03'. Available: 5, requested: 30
+2026-07-03 01:26:47,980 | WARNING  | restaurant_api | method=POST path=/api/cart/ status=400 duration_ms=5.78
+2026-07-03 01:26:47,982 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 400 Bad Request"
+2026-07-03 01:26:47,992 | WARNING  | restaurante_delivery_api | AppException 400: El carrito está vacío. Añade productos antes de realizar un pedido.
+2026-07-03 01:26:47,992 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=400 duration_ms=6.35
+2026-07-03 01:26:47,994 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=229.18
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.78
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=6.95
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=235.71
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=254.7
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: Stock insuficiente para 'SEM03'. Available: 5, requested: 30
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/cart/ status=400 duration_ms=5.78
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 400 Bad Request"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El carrito está vacío. Añade productos antes de realizar un pedido.
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=400 duration_ms=6.35
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 400 Bad Request"
+_______ TestF2_PedidoInventario.test_SEM04_consistencia_descuento_stock _______
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:48,537 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=247.29
+2026-07-03 01:26:48,539 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:48,547 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.41
+2026-07-03 01:26:48,549 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:48,557 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=6.5
+2026-07-03 01:26:48,559 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:48,570 | INFO     | restaurant_api | method=GET path=/api/inventory/ status=200 duration_ms=8.44
+2026-07-03 01:26:48,572 | INFO     | httpx | HTTP Request: GET http://testserver/api/inventory/ "HTTP/1.1 200 OK"
+2026-07-03 01:26:48,809 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=234.24
+2026-07-03 01:26:48,811 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:49,059 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=245.41
+2026-07-03 01:26:49,061 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:49,074 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=9.56
+2026-07-03 01:26:49,077 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:49,096 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=16.7
+2026-07-03 01:26:49,098 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:49,108 | INFO     | restaurant_api | method=GET path=/api/inventory/1 status=200 duration_ms=6.7
+2026-07-03 01:26:49,110 | INFO     | httpx | HTTP Request: GET http://testserver/api/inventory/1 "HTTP/1.1 200 OK"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=247.29
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.41
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=6.5
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=GET path=/api/inventory/ status=200 duration_ms=8.44
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/inventory/ "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=234.24
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=245.41
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=9.56
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=16.7
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=GET path=/api/inventory/1 status=200 duration_ms=6.7
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/inventory/1 "HTTP/1.1 200 OK"
+___________ TestF3_PedidoPago.test_SIN03_pago_sin_numero_de_tarjeta ___________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:49,615 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=252.18
+2026-07-03 01:26:49,618 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:49,628 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=8.2
+2026-07-03 01:26:49,630 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:49,639 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=6.52
+2026-07-03 01:26:49,641 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:49,877 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=233.72
+2026-07-03 01:26:49,879 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:50,112 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=230.98
+2026-07-03 01:26:50,115 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:50,123 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=6.11
+2026-07-03 01:26:50,125 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:50,136 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=8.47
+2026-07-03 01:26:50,138 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:50,145 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=422 duration_ms=4.46
+2026-07-03 01:26:50,146 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=252.18
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=8.2
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=6.52
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=233.72
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=230.98
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=6.11
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=8.47
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=422 duration_ms=4.46
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+__________ TestF3_PedidoPago.test_SIN04_pago_con_amount_no_numerico ___________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:50,618 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=231.34
+2026-07-03 01:26:50,620 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:50,629 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.13
+2026-07-03 01:26:50,631 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:50,641 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.58
+2026-07-03 01:26:50,643 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:50,881 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=235.85
+2026-07-03 01:26:50,883 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:51,123 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.94
+2026-07-03 01:26:51,125 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:51,137 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=8.94
+2026-07-03 01:26:51,139 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:51,151 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=9.68
+2026-07-03 01:26:51,153 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:51,161 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=422 duration_ms=4.77
+2026-07-03 01:26:51,163 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=231.34
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.13
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.58
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=235.85
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.94
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=8.94
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=9.68
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=422 duration_ms=4.77
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+_________ TestF3_PedidoPago.test_SIN05_pago_con_tarjeta_de_15_digitos _________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:51,646 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=239.1
+2026-07-03 01:26:51,648 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:51,657 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.56
+2026-07-03 01:26:51,659 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:51,670 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.64
+2026-07-03 01:26:51,672 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:51,909 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=235.16
+2026-07-03 01:26:51,912 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:52,155 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=239.35
+2026-07-03 01:26:52,157 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:52,168 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.71
+2026-07-03 01:26:52,170 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:52,181 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=8.9
+2026-07-03 01:26:52,183 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:52,190 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=422 duration_ms=4.13
+2026-07-03 01:26:52,192 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=239.1
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.56
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.64
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=235.16
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=239.35
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.71
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=8.9
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=422 duration_ms=4.13
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 422 Unprocessable Entity"
+________ TestF3_PedidoPago.test_SEM05_pago_con_monto_distinto_al_total ________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:52,671 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.52
+2026-07-03 01:26:52,673 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:52,682 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.86
+2026-07-03 01:26:52,685 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:52,694 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.16
+2026-07-03 01:26:52,696 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:52,933 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=234.41
+2026-07-03 01:26:52,936 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:53,173 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=234.6
+2026-07-03 01:26:53,175 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:53,186 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=8.36
+2026-07-03 01:26:53,188 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:53,204 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=12.51
+2026-07-03 01:26:53,206 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:53,215 | WARNING  | restaurante_delivery_api | AppException 400: El monto del pago no coincide con el total del pedido
+2026-07-03 01:26:53,216 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=400 duration_ms=6.86
+2026-07-03 01:26:53,217 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.52
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.86
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.16
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=234.41
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=234.6
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=8.36
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=12.51
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El monto del pago no coincide con el total del pedido
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=400 duration_ms=6.86
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 400 Bad Request"
+__________ TestF3_PedidoPago.test_SEM06_doble_pago_del_mismo_pedido ___________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:53,725 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=254.82
+2026-07-03 01:26:53,728 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:53,737 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=7.05
+2026-07-03 01:26:53,740 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:53,752 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=8.71
+2026-07-03 01:26:53,754 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:53,997 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=239.71
+2026-07-03 01:26:53,999 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:54,264 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=263.23
+2026-07-03 01:26:54,267 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:54,276 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=6.69
+2026-07-03 01:26:54,278 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:54,296 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=13.51
+2026-07-03 01:26:54,298 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:54,309 | INFO     | restaurant_api | method=POST path=/api/payments/ status=201 duration_ms=8.62
+2026-07-03 01:26:54,311 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:54,322 | WARNING  | restaurante_delivery_api | AppException 400: El pago ya existe para el pedido 1
+2026-07-03 01:26:54,322 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=400 duration_ms=5.32
+2026-07-03 01:26:54,323 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=254.82
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=7.05
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=8.71
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=239.71
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=263.23
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=6.69
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=13.51
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/payments/ status=201 duration_ms=8.62
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El pago ya existe para el pedido 1
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=400 duration_ms=5.32
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 400 Bad Request"
+______________ TestF3_PedidoPago.test_SEM07_pago_de_pedido_ajeno ______________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:54,830 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=240.3
+2026-07-03 01:26:54,832 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:54,841 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.22
+2026-07-03 01:26:54,843 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:54,855 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=8.78
+2026-07-03 01:26:54,857 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:55,097 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=237.3
+2026-07-03 01:26:55,099 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:55,343 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=241.94
+2026-07-03 01:26:55,345 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:55,356 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.62
+2026-07-03 01:26:55,358 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:55,371 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=8.78
+2026-07-03 01:26:55,373 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:55,619 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=243.26
+2026-07-03 01:26:55,621 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:55,861 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.03
+2026-07-03 01:26:55,863 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:55,870 | WARNING  | restaurante_delivery_api | AppException 403: Solo puedes pagar tus propios pedidos
+2026-07-03 01:26:55,870 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=403 duration_ms=4.73
+2026-07-03 01:26:55,872 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=240.3
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.22
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=8.78
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=237.3
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=241.94
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.62
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=8.78
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=243.26
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.03
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 403: Solo puedes pagar tus propios pedidos
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=403 duration_ms=4.73
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 403 Forbidden"
+___________ TestF3_PedidoPago.test_SEM08_pago_de_pedido_inexistente ___________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:56,120 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=238.64
+2026-07-03 01:26:56,122 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:56,368 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=242.7
+2026-07-03 01:26:56,370 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:56,377 | WARNING  | restaurante_delivery_api | AppException 404: Pedido con id 99999 no encontrado
+2026-07-03 01:26:56,377 | WARNING  | restaurant_api | method=POST path=/api/payments/ status=404 duration_ms=4.3
+2026-07-03 01:26:56,379 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 404 Not Found"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=238.64
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=242.7
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 404: Pedido con id 99999 no encontrado
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/payments/ status=404 duration_ms=4.3
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 404 Not Found"
+___ TestF4_PedidoDelivery.test_SIN06_delivery_con_distancia_fuera_de_rango ____
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:56,855 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.03
+2026-07-03 01:26:56,857 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:56,865 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.55
+2026-07-03 01:26:56,868 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:56,883 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=12.2
+2026-07-03 01:26:56,885 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:57,123 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=233.21
+2026-07-03 01:26:57,125 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:57,362 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=233.15
+2026-07-03 01:26:57,364 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:57,373 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=6.73
+2026-07-03 01:26:57,375 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:57,384 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=7.33
+2026-07-03 01:26:57,386 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:57,448 | INFO     | restaurant_api | method=PATCH path=/api/orders/1/status status=200 duration_ms=59.05
+2026-07-03 01:26:57,450 | INFO     | httpx | HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+2026-07-03 01:26:57,458 | WARNING  | restaurant_api | method=POST path=/api/delivery/ status=422 duration_ms=5.28
+2026-07-03 01:26:57,460 | INFO     | httpx | HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.03
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.55
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=12.2
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=233.21
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=233.15
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=6.73
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=7.33
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=PATCH path=/api/orders/1/status status=200 duration_ms=59.05
+INFO     httpx:_client.py:1025 HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/delivery/ status=422 duration_ms=5.28
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 422 Unprocessable Entity"
+_________ TestF4_PedidoDelivery.test_SIN07_delivery_sin_campo_address _________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:57,947 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=234.73
+2026-07-03 01:26:57,949 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:57,959 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.92
+2026-07-03 01:26:57,960 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:57,972 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=8.09
+2026-07-03 01:26:57,974 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:58,216 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=237.66
+2026-07-03 01:26:58,218 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:58,467 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=246.95
+2026-07-03 01:26:58,469 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:58,480 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=8.29
+2026-07-03 01:26:58,482 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:58,496 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=11.16
+2026-07-03 01:26:58,499 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:58,515 | INFO     | restaurant_api | method=PATCH path=/api/orders/1/status status=200 duration_ms=12.31
+2026-07-03 01:26:58,518 | INFO     | httpx | HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+2026-07-03 01:26:58,531 | WARNING  | restaurant_api | method=POST path=/api/delivery/ status=422 duration_ms=8.4
+2026-07-03 01:26:58,533 | INFO     | httpx | HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 422 Unprocessable Entity"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=234.73
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.92
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=8.09
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=237.66
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=246.95
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=8.29
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=11.16
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=PATCH path=/api/orders/1/status status=200 duration_ms=12.31
+INFO     httpx:_client.py:1025 HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/delivery/ status=422 duration_ms=8.4
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 422 Unprocessable Entity"
+_______ TestF4_PedidoDelivery.test_SEM09_delivery_para_pedido_pendiente _______
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:26:59,076 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=257.91
+2026-07-03 01:26:59,078 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:59,090 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=7.95
+2026-07-03 01:26:59,092 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:59,103 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.91
+2026-07-03 01:26:59,105 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:59,368 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=260.15
+2026-07-03 01:26:59,371 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:26:59,614 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=241.24
+2026-07-03 01:26:59,617 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:26:59,627 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.61
+2026-07-03 01:26:59,629 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:59,642 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=9.26
+2026-07-03 01:26:59,644 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:26:59,651 | WARNING  | restaurante_delivery_api | AppException 400: No se puede crear entrega para un pedido en estado PENDIENTE
+2026-07-03 01:26:59,651 | WARNING  | restaurant_api | method=POST path=/api/delivery/ status=400 duration_ms=4.92
+2026-07-03 01:26:59,653 | INFO     | httpx | HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=257.91
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=7.95
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.91
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=260.15
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=241.24
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.61
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=9.26
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: No se puede crear entrega para un pedido en estado PENDIENTE
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/delivery/ status=400 duration_ms=4.92
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 400 Bad Request"
+__ TestF4_PedidoDelivery.test_SEM10_delivery_para_pedido_de_recojo_en_local ___
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:00,154 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=251.23
+2026-07-03 01:27:00,157 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:00,168 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.83
+2026-07-03 01:27:00,170 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:00,180 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.51
+2026-07-03 01:27:00,182 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:00,416 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=231.97
+2026-07-03 01:27:00,418 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:00,659 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=238.46
+2026-07-03 01:27:00,661 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:00,671 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.3
+2026-07-03 01:27:00,673 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:00,683 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=7.57
+2026-07-03 01:27:00,685 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:00,695 | INFO     | restaurant_api | method=PATCH path=/api/orders/1/status status=200 duration_ms=7.62
+2026-07-03 01:27:00,697 | INFO     | httpx | HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+2026-07-03 01:27:00,706 | WARNING  | restaurante_delivery_api | AppException 400: El pedido 1 es para recojo en local, no requiere delivery
+2026-07-03 01:27:00,706 | WARNING  | restaurant_api | method=POST path=/api/delivery/ status=400 duration_ms=6.77
+2026-07-03 01:27:00,708 | INFO     | httpx | HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=251.23
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.83
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.51
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=231.97
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=238.46
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.3
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=7.57
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=PATCH path=/api/orders/1/status status=200 duration_ms=7.62
+INFO     httpx:_client.py:1025 HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: El pedido 1 es para recojo en local, no requiere delivery
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/delivery/ status=400 duration_ms=6.77
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/delivery/ "HTTP/1.1 400 Bad Request"
+________ TestF4_PedidoDelivery.test_SEM11_transicion_de_estado_ilegal _________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:01,188 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=237.22
+2026-07-03 01:27:01,190 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:01,198 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.48
+2026-07-03 01:27:01,200 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:01,210 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.25
+2026-07-03 01:27:01,212 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:01,451 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=236.75
+2026-07-03 01:27:01,453 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:01,693 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=236.64
+2026-07-03 01:27:01,695 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:01,705 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.42
+2026-07-03 01:27:01,707 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:01,720 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=10.31
+2026-07-03 01:27:01,724 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:01,744 | WARNING  | restaurante_delivery_api | AppException 400: Transición de estado no permitida para este pedido
+2026-07-03 01:27:01,745 | WARNING  | restaurant_api | method=PATCH path=/api/orders/1/status status=400 duration_ms=10.84
+2026-07-03 01:27:01,746 | INFO     | httpx | HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 400 Bad Request"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=237.22
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.48
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.25
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=236.75
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=236.64
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.42
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=10.31
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 400: Transición de estado no permitida para este pedido
+WARNING  restaurant_api:logging_middleware.py:40 method=PATCH path=/api/orders/1/status status=400 duration_ms=10.84
+INFO     httpx:_client.py:1025 HTTP Request: PATCH http://testserver/api/orders/1/status "HTTP/1.1 400 Bad Request"
+________ TestF5_AuthRoles.test_SEM12_cliente_no_puede_crear_inventario ________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:02,265 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=228.99
+2026-07-03 01:27:02,267 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:02,276 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.72
+2026-07-03 01:27:02,279 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:02,288 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.03
+2026-07-03 01:27:02,290 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:02,524 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=231.27
+2026-07-03 01:27:02,526 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:02,762 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=233.78
+2026-07-03 01:27:02,764 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:02,771 | WARNING  | restaurante_delivery_api | AppException 403: No tienes permiso para realizar esta acción
+2026-07-03 01:27:02,771 | WARNING  | restaurant_api | method=POST path=/api/inventory/ status=403 duration_ms=4.13
+2026-07-03 01:27:02,772 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 403 Forbidden"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=228.99
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.72
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.03
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=231.27
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=233.78
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+WARNING  restaurante_delivery_api:main.py:69 AppException 403: No tienes permiso para realizar esta acción
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/inventory/ status=403 duration_ms=4.13
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 403 Forbidden"
+________________ TestF5_AuthRoles.test_SIN08_token_malformado _________________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:02,786 | WARNING  | restaurante_delivery_api | AppException 401: No se pudieron validar las credenciales
+2026-07-03 01:27:02,787 | WARNING  | restaurant_api | method=GET path=/api/orders/ status=401 duration_ms=3.25
+2026-07-03 01:27:02,788 | INFO     | httpx | HTTP Request: GET http://testserver/api/orders/ "HTTP/1.1 401 Unauthorized"
+------------------------------ Captured log call ------------------------------
+WARNING  restaurante_delivery_api:main.py:69 AppException 401: No se pudieron validar las credenciales
+WARNING  restaurant_api:logging_middleware.py:40 method=GET path=/api/orders/ status=401 duration_ms=3.25
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/orders/ "HTTP/1.1 401 Unauthorized"
+________________ TestF5_AuthRoles.test_SEM13_acceso_sin_token _________________
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:02,801 | WARNING  | restaurant_api | method=POST path=/api/orders/ status=401 duration_ms=2.61
+2026-07-03 01:27:02,803 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 401 Unauthorized"
+------------------------------ Captured log call ------------------------------
+WARNING  restaurant_api:logging_middleware.py:40 method=POST path=/api/orders/ status=401 duration_ms=2.61
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 401 Unauthorized"
+_____ TestRES_Resiliencia.test_RES01_latencia_alta_en_creacion_de_pedido ______
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:03,292 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=241.82
+2026-07-03 01:27:03,294 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:03,303 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=5.97
+2026-07-03 01:27:03,305 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:03,317 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=8.94
+2026-07-03 01:27:03,319 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:03,576 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=254.71
+2026-07-03 01:27:03,579 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:03,818 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=236.92
+2026-07-03 01:27:03,821 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:03,831 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.23
+2026-07-03 01:27:03,833 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:05,845 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=2009.26
+2026-07-03 01:27:05,847 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=241.82
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=5.97
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=8.94
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=254.71
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=236.92
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.23
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=2009.26
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+_ TestRES_Resiliencia.test_RES02_fallo_del_subsistema_de_pago_no_expone_stacktrace _
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:06,364 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=258.31
+2026-07-03 01:27:06,366 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:06,375 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.65
+2026-07-03 01:27:06,378 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:06,387 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=6.47
+2026-07-03 01:27:06,389 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:06,641 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=250.09
+2026-07-03 01:27:06,644 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:06,902 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=254.1
+2026-07-03 01:27:06,905 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:06,916 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=9.42
+2026-07-03 01:27:06,919 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:06,933 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=10.53
+2026-07-03 01:27:06,935 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:06,942 | WARNING  | restaurante_delivery_api | AppException 500: Error interno del servidor. Intente más tarde.
+2026-07-03 01:27:06,942 | ERROR    | restaurant_api | method=POST path=/api/payments/ status=500 duration_ms=4.62
+2026-07-03 01:27:06,944 | INFO     | httpx | HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 500 Internal Server Error"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=258.31
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.65
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=6.47
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=250.09
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=254.1
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=9.42
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=10.53
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+WARNING  restaurante_delivery_api:main.py:69 AppException 500: Error interno del servidor. Intente más tarde.
+ERROR    restaurant_api:logging_middleware.py:38 method=POST path=/api/payments/ status=500 duration_ms=4.62
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/payments/ "HTTP/1.1 500 Internal Server Error"
+_ TestRES_Resiliencia.test_RES03_integridad_tras_latencia_no_hay_doble_descuento _
+---------------------------- Captured stderr call -----------------------------
+2026-07-03 01:27:07,439 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=233.77
+2026-07-03 01:27:07,441 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:07,452 | INFO     | restaurant_api | method=POST path=/api/menu/ status=201 duration_ms=6.98
+2026-07-03 01:27:07,454 | INFO     | httpx | HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:07,464 | INFO     | restaurant_api | method=POST path=/api/inventory/ status=201 duration_ms=7.06
+2026-07-03 01:27:07,466 | INFO     | httpx | HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:07,475 | INFO     | restaurant_api | method=GET path=/api/inventory/ status=200 duration_ms=5.97
+2026-07-03 01:27:07,477 | INFO     | httpx | HTTP Request: GET http://testserver/api/inventory/ "HTTP/1.1 200 OK"
+2026-07-03 01:27:07,734 | INFO     | restaurant_api | method=POST path=/api/auth/register status=201 duration_ms=253.48
+2026-07-03 01:27:07,736 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+2026-07-03 01:27:07,977 | INFO     | restaurant_api | method=POST path=/api/auth/login status=200 duration_ms=238.33
+2026-07-03 01:27:07,979 | INFO     | httpx | HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+2026-07-03 01:27:07,989 | INFO     | restaurant_api | method=POST path=/api/cart/ status=201 duration_ms=7.41
+2026-07-03 01:27:07,991 | INFO     | httpx | HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:09,006 | INFO     | restaurant_api | method=POST path=/api/orders/ status=201 duration_ms=1010.09
+2026-07-03 01:27:09,008 | INFO     | httpx | HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+2026-07-03 01:27:09,017 | INFO     | restaurant_api | method=GET path=/api/inventory/1 status=200 duration_ms=6.02
+2026-07-03 01:27:09,019 | INFO     | httpx | HTTP Request: GET http://testserver/api/inventory/1 "HTTP/1.1 200 OK"
+------------------------------ Captured log call ------------------------------
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=233.77
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/menu/ status=201 duration_ms=6.98
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/menu/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/inventory/ status=201 duration_ms=7.06
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/inventory/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=GET path=/api/inventory/ status=200 duration_ms=5.97
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/inventory/ "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/register status=201 duration_ms=253.48
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/register "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/auth/login status=200 duration_ms=238.33
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/auth/login "HTTP/1.1 200 OK"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/cart/ status=201 duration_ms=7.41
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/cart/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=POST path=/api/orders/ status=201 duration_ms=1010.09
+INFO     httpx:_client.py:1025 HTTP Request: POST http://testserver/api/orders/ "HTTP/1.1 201 Created"
+INFO     restaurant_api:logging_middleware.py:42 method=GET path=/api/inventory/1 status=200 duration_ms=6.02
+INFO     httpx:_client.py:1025 HTTP Request: GET http://testserver/api/inventory/1 "HTTP/1.1 200 OK"
+=========================== short test summary info ===========================
+PASSED tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN01_pedido_con_tipo_de_dato_erroneo_en_notes
+PASSED tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SIN02_pedido_con_direccion_bajo_longitud_minima
+PASSED tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM01_pedido_desde_carrito_vacio
+PASSED tests/test_fronteras_integracion.py::TestF1_CarritoPedido::test_SEM02_pedido_excede_monto_maximo
+PASSED tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM03_stock_insuficiente_bloqueado_en_frontera
+PASSED tests/test_fronteras_integracion.py::TestF2_PedidoInventario::test_SEM04_consistencia_descuento_stock
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN03_pago_sin_numero_de_tarjeta
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN04_pago_con_amount_no_numerico
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SIN05_pago_con_tarjeta_de_15_digitos
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM05_pago_con_monto_distinto_al_total
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM06_doble_pago_del_mismo_pedido
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM07_pago_de_pedido_ajeno
+PASSED tests/test_fronteras_integracion.py::TestF3_PedidoPago::test_SEM08_pago_de_pedido_inexistente
+PASSED tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN06_delivery_con_distancia_fuera_de_rango
+PASSED tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SIN07_delivery_sin_campo_address
+PASSED tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM09_delivery_para_pedido_pendiente
+PASSED tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM10_delivery_para_pedido_de_recojo_en_local
+PASSED tests/test_fronteras_integracion.py::TestF4_PedidoDelivery::test_SEM11_transicion_de_estado_ilegal
+PASSED tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM12_cliente_no_puede_crear_inventario
+PASSED tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SIN08_token_malformado
+PASSED tests/test_fronteras_integracion.py::TestF5_AuthRoles::test_SEM13_acceso_sin_token
+PASSED tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES01_latencia_alta_en_creacion_de_pedido
+PASSED tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES02_fallo_del_subsistema_de_pago_no_expone_stacktrace
+PASSED tests/test_fronteras_integracion.py::TestRES_Resiliencia::test_RES03_integridad_tras_latencia_no_hay_doble_descuento
+============================= 24 passed in 25.15s =============================
